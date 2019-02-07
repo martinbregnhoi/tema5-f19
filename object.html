@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Object</title>
+    <style>
+        img {
+            max-width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="person">
+        <h3></h3>
+        <p>Email:</p>
+        <img src="" alt="">
+    </div>
+
+    <script>
+        const person = {
+            "fornavn": "Martin",
+            "efternavn": "Bregnhøi",
+            "email": "mabe@kea.dk",
+            "billede": "http://mabe-kea.dk/martin.jpg"
+        }
+
+        const destination = document.querySelector("#person");
+        const fuldeNavn = `${person.fornavn} ${person.efternavn}`;
+        destination.querySelector("h3").textContent = fuldeNavn;
+        destination.querySelector("p").textContent += person.email;
+        destination.querySelector("img").src = person.billede;
+
+
+
+    </script>
+</body>
+
+</html>

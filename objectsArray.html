@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Object</title>
+    <style>
+        img {
+            max-width: 150px;
+        }
+        .person{
+            border: 1px solid #000;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="personliste"> </div>
+
+    <script>
+        const personer =[ {
+            "fornavn": "Martin",
+            "efternavn": "Bregnhøi",
+            "email": "mabe@kea.dk",
+            "billede": "http://mabe-kea.dk/martin.jpg"
+        },{
+            "fornavn": "Helle",
+            "efternavn": "Frederiksen",
+            "email": "helf@kea.dk",
+            "billede": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/26166348_10155540526277499_6159377833378174933_n.jpg?_nc_cat=111&_nc_ht=scontent-arn2-1.xx&oh=defa7c49aace8dd8a254a120cc18139e&oe=5CEBB33D"
+        },{
+            "fornavn": "Kamilla",
+            "efternavn": "Viktor",
+            "email": "kvi@kea.dk",
+            "billede": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/c7.133.172.172a/62910_1664077404553_7084966_n.jpg?_nc_cat=105&_nc_ht=scontent-arn2-1.xx&oh=8e29f9e7ca47e6d5a582d35787f9b79f&oe=5CF78528"
+        },{
+            "fornavn": "Klaus",
+            "efternavn": "Mandal",
+            "email": "klmh@kea.dk",
+            "billede": "https://miro.medium.com/fit/c/240/240/0*5fTVWyCKDuRNvds2."
+        }]
+
+        const destination = document.querySelector("#personliste");
+
+        function visPersoner() {
+            personer.forEach(person => {
+                destination.innerHTML += `
+                        <div class="person">
+                                <h3>${person.fornavn}${person.efternavn}</h3>
+                                <img src=${person.billede} alt=${person.navn}>
+                        		<p>Email: ${person.email}</p>
+                        </div>
+                    `;
+            })
+        }
+
+        visPersoner();
+
+
+    </script>
+</body>
+
+</html>

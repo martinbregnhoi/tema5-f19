@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hent JSON</title>
+    <style>
+        article {
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #666;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="data-container"></section>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", hentJson);
+
+        let undervisere;
+
+        //Hent JSON fil i asynkron function
+        async function hentJson() {
+            //henter data filen
+            const myJson = await fetch("undervisere.json");
+            // den hentede data skal tolkes som json
+            undervisere = await myJson.json();
+
+            //console.log(undervisere);
+            //kald funktion der viser data i DOM
+            visUndervisere();
+        }
+
+
+        function visUndervisere() {
+
+            const modtager = document.querySelector(".data-container");
+
+            //løb personlisten igennem og indsæt data en template
+
+            undervisere.forEach(person => {
+
+                //placer person i html
+
+                modtager.innerHTML +=
+                `<article class="underviser">
+                <h3>${person.navn}</h3>
+                <p class="email">${person.email}</p>
+                <p class="github">${person.github}</p>
+                </article>`;
+
+                //modtager.insertAdjacentHTML("beforeend", enkelt);
+
+            })
+        }
+    </script>
+
+
+</body>
+</html>
