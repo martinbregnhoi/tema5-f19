@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hent JSON</title>
+    <style>
+        article {
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #666;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="data-container"></section>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", visUndervisere);
+
+        let undervisere = [{
+                "navn": "Helle Frederiksen",
+                "email": "helf@kea.dk",
+                "github": "helefred"
+            },
+            {
+                "navn": "Martin Bregnhøi",
+                "email": "mabe@kea.dk",
+                "github": "martinbregnhoi"
+            },
+            {
+                "navn": "Kamilla Viktor",
+                "email": "kvi@kea.dk",
+                "github": "kvikea"
+            },
+            {
+                "navn": "Klaus Mandal",
+                "email": "klmh@kea.dk",
+                "github": "MondaleMondale"
+            }
+        ];
+
+        function visUndervisere() {
+
+            const modtager = document.querySelector(".data-container");
+
+            //løb personlisten igennem og indsæt data en template
+
+            undervisere.forEach(person => {
+
+                //placer person i html
+
+                let template =
+                    `<article class="underviser">
+                <h3>${person.navn}</h3>
+                <p class="email">${person.email}</p>
+                <p class="github">${person.github}</p>
+                </article>`;
+
+                modtager.innerHTML += template;
+                //modtager.insertAdjacentHTML("beforeend", template);
+
+            })
+        }
+    </script>
+
+
+</body>
+</html>
