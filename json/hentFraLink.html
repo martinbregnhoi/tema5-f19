@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hent JSON</title>
+    <style>
+        img {
+            max-width: 150px;
+        }
+
+        article {
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #666;
+        }
+
+        header {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        section {
+            display: grid;
+            grid-gap: 10px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .valgt {
+            background: #f00;
+        }
+
+        button {
+            padding: 5px;
+        }
+
+        @media screen and (min-width:480px) {
+            section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (min-width:960px) {
+            section {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="data-container">
+
+
+
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", hentJson);
+        let personer;
+
+        const modtager = document.querySelector(".data-container");
+        //Hent JSON fil i asynkron function
+        async function hentJson() {
+            const dataUrl = "https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c"
+            //henter data filen
+            const myJson = await fetch(dataUrl);
+            // den hentede data skal tolkes som json
+            personer = await myJson.json();
+            //kald funktion der viser data i DOM
+            visPersoner();
+        }
+
+        function visPersoner() {
+            //løb personlisten igennem og indsæt data en template
+            personer.forEach(person => {
+                    //placer person i html
+
+                    let template =
+                `<article class="underviser">
+                <h3>${person.navn}</h3>
+                <img src="${person.billede}" alt="${person.navn}">
+                <p class="email">${person.email}</p>
+                <p class="github">${person.github}</p>
+                </article>`;
+
+                    modtager.innerHTML += template;
+
+            })
+        }
+
+    </script>
+
+
+</body>
+</html>

@@ -51,13 +51,15 @@
 
                 //placer person i html
 
-                modtager.innerHTML +=
+
+                let template =
                 `<article class="underviser">
                 <h3>${person.navn}</h3>
                 <p class="email">${person.email}</p>
                 <p class="github">${person.github}</p>
                 </article>`;
 
+                modtager.innerHTML += template;
                 //modtager.insertAdjacentHTML("beforeend", enkelt);
 
             })
